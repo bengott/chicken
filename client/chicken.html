@@ -1,0 +1,118 @@
+<head>
+  <title>CHICKEN!</title>
+  <link href="apple-touch-icon.png" rel="apple-touch-icon" />
+  <link href="apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+  <link href="apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+  <link href="apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+</head>
+
+<body>
+
+  {{> header}}
+
+  {{> graphics}}
+
+  {{> driverLabels}}
+
+  {{> highScores}}
+
+</body>
+
+<template name="header">
+  <header>
+    <div id="main">
+      <h1>
+        <a href="/">CHICKEN! <img src="running_chicken.svg" height="70" /></a>
+      </h1>
+      <h3>Hit spacebar or click the road to chicken out! Winner stays on.</h3>
+
+      <div id="inputContainer">
+        Wanna play? Enter your name to be added to the waitlist:
+        <input id="txtName" type="text" />
+        <button id="btnName" type="button">Enter</button>
+      </div>
+    </div>
+
+    {{> waitlist}}
+  </header>
+</template>
+
+<template name="waitlist">
+  <div id="waitlist">
+    <h4>Waitlist</h4>
+    <ul>
+      {{#each players}}
+      <li>{{player}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="graphics">
+  <div id="graphics">
+    <svg xmlns="http://www.w3.org/2000/svg" width="{{roadWidth}}" height="{{roadHeight}}">
+
+      {{! road }}
+      <rect width="{{roadWidth}}" height="{{roadHeight}}"
+            style="stroke: black; stroke-width: 2; fill: gray;" />
+      <line x1="0" y1="50%" x2="100%" y2="50%"
+            style="stroke: yellow; stroke-width: 5; stroke-dasharray: 30,50" />
+
+      {{! car A }}
+      <rect {{carXY 'A'}} width="{{carWidth}}" height="{{carHeight}}"
+            style="stroke: black; fill: blue;" />
+
+      {{! car B }}
+      <rect {{carXY 'B'}} width="{{carWidth}}" height="{{carHeight}}"
+            style="stroke: black; fill: red;" />
+
+      {{! countdown timer }}
+      <text {{countdownXY}} stroke="gray" stroke-width="1"
+            style="font-family: Verdana; font-size: 60; font-weight: bold; fill: white;">
+        {{countdown}}
+      </text>
+
+      {{! explosion }}
+      <g transform="translate(430,70)" style="{{explosionCSS}}">
+        <polygon style="fill:#FFF466;stroke:#000000;stroke-width:4.375;stroke-miterlimit:7;" points="76.435,10.906 60.356,48.289    44.052,30.703 44.239,56.352 9.122,43.383 34.458,67.625 18.771,76.062 37.552,82.461 10.606,98.633 44.231,96.242 45.177,121    59.88,98.805 71.356,111.414 75.896,100.906 94.771,114.234 92.083,99.344 127.083,116.406 102.09,91.312 125.551,77.836    100.442,73.93 123.771,52.727 89.176,58.445 98.286,32.141 78.997,46.953  "/>
+        <polygon points="79.474,0 77.504,5.422 79.192,45.531 83.114,42.922  "/>
+        <polygon points="131.215,50.367 127.715,50.609 101.786,73.914 106.301,75.297  "/>
+        <polygon points="132.278,77.602 129.286,76.93 103.583,91.883 107.708,94.188  "/>
+        <polygon points="133.293,120.695 140.301,124.32 107.388,89.016 105.926,93.492  "/>
+        <polygon points="140.301,124.32 124.911,116.422 93.731,100.828 94.099,105.531  "/>
+        <polygon points="96.528,116.844 98.918,120.508 97.981,103.234 92.06,99.867  "/>
+        <polygon points="43.786,121.781 44.325,129.383 63.497,105.688 58.45,102.258  "/>
+        <polygon points="7.224,99.125 0.997,102.5 44.083,101.195 44.06,96.789  "/>
+        <polygon points="71.942,113.914 73.426,117.312 79.192,103.398 76.411,101.539  "/>
+        <polygon points="73.426,117.312 70.692,111.992 59.95,100.75 57.13,102.922  "/>
+        <polygon points="98.918,120.508 97.138,116.211 77.106,102.969 74.051,105.531  "/>
+        <polygon points="103.388,26.477 100.872,28.445 90.458,58.812 95.083,57.891  "/>
+      </g>
+
+    </svg>
+  </div>
+</template>
+
+<template name="driverLabels">
+  <div id="driverLabels">
+    <div id="driverA">{{driverA}}</div>
+    <div id="vs">VS</div>
+    <div id="driverB">{{driverB}}</div>
+  </div>
+</template>  
+
+<template name="highScores">
+  <div id="highScores">
+    <h4>High Scores</h4>
+    <table>
+      <thead>
+        <tr><th>Player</th><th>Wins</th></tr>
+      </thead>
+      <tbody>      
+        {{#each rows}}
+        <tr><td>{{player}}</td><td>{{wins}}</td></tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

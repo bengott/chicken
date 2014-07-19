@@ -1,0 +1,82 @@
+body {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  height: 200px;
+  h1 {
+    font-size: 60px;
+    font-style: italic;
+    font-weight: bold;
+    img {
+      vertical-align: bottom;
+    }
+    a {
+      color: black;
+      &:hover {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+  #main, #waitlist {
+    display: inline-block;
+    vertical-align: top;
+  }
+  #main {
+    float: left;
+  }
+  #waitlist {
+    float: right;
+    width: 20%;
+    ul {
+      height: 120px;
+      border: 1px solid gray;
+      overflow-y: scroll;
+      list-style: none;
+      padding: 2px;
+    }
+  }
+}
+
+#driverLabels {
+  font-weight: bold;
+  font-size: 20px;
+  #driverA, #vs {
+    float: left;
+    padding-left: 5px;
+  }
+  #driverA {
+    width: 480px;
+  }
+  #driverB {
+    float: right;
+    padding-right: 5px;
+  }
+}
+
+#highScores {
+  clear: both;
+  padding: 20px 0px;
+  width: 30%;
+  h4 {
+    text-align: left;
+  }
+  table {
+    width: 100%;
+    th, td {
+      width: 50%;
+      padding: 5px;
+    }
+    th {
+      color: white;
+      background-color: gray;
+      border: 1px solid gray;
+    }
+    td {
+      border: 1px solid lightgray;
+    }
+  }
+}
