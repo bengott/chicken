@@ -56,9 +56,14 @@ Template.graphics.helpers({
     }
   },
   countdownXY: function() {
+    var countdown = Statuses.findOne("countdown") && Statuses.findOne("countdown").value;
+    var xOffset = 30;
+    if (countdown === 10) xOffset = 60;
+    if (countdown === 0) xOffset = 70;
+
     return {
-      x: roadWidth/2 - 30,
-      y: roadHeight/2 + 20
+      x: roadWidth/2 - xOffset,
+      y: roadHeight/2 + 30
     };
   },
   explosionCSS: function() {
