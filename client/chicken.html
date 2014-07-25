@@ -50,7 +50,8 @@
 
 <template name="graphics">
   <div id="graphics">
-    <svg xmlns="http://www.w3.org/2000/svg" width="{{roadWidth}}" height="{{roadHeight}}">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+         width="{{roadWidth}}" height="{{roadHeight}}">
 
       {{! road }}
       <rect width="{{roadWidth}}" height="{{roadHeight}}"
@@ -59,12 +60,10 @@
             style="stroke: yellow; stroke-width: 5; stroke-dasharray: 30,50" />
 
       {{! car A }}
-      <rect {{carXY 'A'}} width="{{carWidth}}" height="{{carHeight}}"
-            style="stroke: black; fill: blue;" />
+      <image {{carXY 'A'}} width="{{carWidth}}" height="{{carHeight}}" xlink:href="bluecar.svg" />
 
       {{! car B }}
-      <rect {{carXY 'B'}} width="{{carWidth}}" height="{{carHeight}}"
-            style="stroke: black; fill: red;" />
+      <image {{carXY 'B'}} width="{{carWidth}}" height="{{carHeight}}" xlink:href="redcar.svg" />
 
       {{! countdown timer }}
       <text {{countdownXY}} stroke="gray" stroke-width="1"
