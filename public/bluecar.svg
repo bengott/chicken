@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="442.14288"
-   height="220.01677"
+   width="100"
+   height="50"
    id="svg3397"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 9">
+   sodipodi:docname="bluecar.svg">
   <defs
      id="defs3399" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="261.78573"
+     inkscape:cx="-201.07141"
      inkscape:cy="181.43699"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,10 +55,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-113.21427,-493.78239)">
+     transform="translate(-113.21427,-663.79916)">
     <g
        id="g3245"
-       transform="matrix(0,1,-1,0,1065.68,1203.3809)">
+       transform="matrix(0,0.2272554,-0.22617123,0,328.63462,825.05926)">
       <path
          inkscape:export-ydpi="90"
          inkscape:export-xdpi="90"

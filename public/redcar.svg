@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="442.14288"
-   height="220.01677"
+   width="100"
+   height="50"
    id="svg3117"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname=" redcar.svg">
+   sodipodi:docname="redcar.svg">
   <defs
      id="defs3119" />
   <sodipodi:namedview
@@ -25,7 +25,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="375"
+     inkscape:cx="-122.14286"
      inkscape:cy="62.857166"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -38,7 +38,7 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="-0.2"
-     fit-margin-bottom="-0.5" />
+     fit-margin-bottom="-0.1" />
   <metadata
      id="metadata3122">
     <rdf:RDF>
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,10 +55,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(1.7509809e-6,-832.34543)">
+     transform="translate(1.7509809e-6,-1002.3622)">
     <g
        id="g3271"
-       transform="matrix(0,-1,1,0,-529.48835,604.79886)"
+       transform="matrix(0,-0.2272554,0.22617123,0,-119.75504,950.65102)"
        clip-path="none">
       <path
          inkscape:export-ydpi="90"
