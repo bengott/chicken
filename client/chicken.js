@@ -15,7 +15,7 @@ Template.header.events({
   },
  'click button#btnShowHighScores': function() {
     bootbox.dialog({
-      message: " ",
+      message: " ", //bootbox won't allow an empty message
       onEscape: bootbox.hideAll()
     });
     UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
@@ -24,7 +24,7 @@ Template.header.events({
 
 Template.waitlist.players = function() {
   return Waitlist.find().fetch();
-}
+};
 
 Template.graphics.helpers({
   roadWidth: function() { return roadWidth; },
@@ -103,7 +103,7 @@ Template.highScores.rows = function() {
 
 Template.modal.showMessage = function() {
   var modalMessage = Statuses.findOne("modal") && Statuses.findOne("modal").message;
-  if (modalMessage !== null) {
+  if (modalMessage) {
     bootbox.dialog({
       title: "Result",
       message: modalMessage,
@@ -117,7 +117,7 @@ Template.modal.showMessage = function() {
       Statuses.update("modal", {$set: {message: null}});
     }, 3000);
   }
-}
+};
 
 function getDriver(carId) {
   return (Cars.findOne(carId) && Cars.findOne(carId).driver) || "waiting for player..."; 
