@@ -1,5 +1,6 @@
 body {
   width: 1000px;
+  padding-right: 0px !important; //override bootbox padding
   margin-left: auto;
   margin-right: auto;
   font-family: 'Architects Daughter', 'Helvetica Neue', Helvetica, Arial, serif;
@@ -43,6 +44,9 @@ header {
       padding: 2px;
     }
   }
+  #btnShowHighScores {
+    margin-left: 25px;
+  }
 }
 
 #driverLabels {
@@ -60,10 +64,13 @@ header {
   }
 }
 
+.modal-dialog {
+  width: 400px;
+  margin: 100px auto;
+}
+
 #highScores {
-  clear: both;
   padding: 20px 0px;
-  width: 30%;
   h4 {
     text-align: left;
   }

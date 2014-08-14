@@ -19,6 +19,7 @@ function initialize() {
   Statuses.remove({});
   Statuses.insert({_id: "countdown", value: null});
   Statuses.insert({_id: "crash", value: false});
+  Statuses.insert({_id: "modal", message: null});
 }
 
 function manageMatchups() {

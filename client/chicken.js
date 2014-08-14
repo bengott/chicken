@@ -12,6 +12,13 @@ Template.header.events({
       enterName();
       e.stopPropagation();
     }
+  },
+ 'click button#btnShowHighScores': function() {
+    bootbox.dialog({
+      message: " ",
+      onEscape: bootbox.hideAll()
+    });
+    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
   }
 });
 
@@ -93,6 +100,24 @@ Template.driverLabels.helpers({
 Template.highScores.rows = function() {
   return HighScores.find({}, {sort: {wins: -1, player: 1}}).fetch();
 };
+
+Template.modal.showMessage = function() {
+  var modalMessage = Statuses.findOne("modal") && Statuses.findOne("modal").message;
+  if (modalMessage !== null) {
+    bootbox.dialog({
+      title: "Result",
+      message: modalMessage,
+      onEscape: bootbox.hideAll()
+    });
+    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
+
+    //auto-hide the modal after 3 seconds and reset the modal message
+    Meteor.setTimeout(function() {
+      bootbox.hideAll();
+      Statuses.update("modal", {$set: {message: null}});
+    }, 3000);
+  }
+}
 
 function getDriver(carId) {
   return (Cars.findOne(carId) && Cars.findOne(carId).driver) || "waiting for player..."; 

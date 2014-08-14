@@ -16,7 +16,7 @@
 
   {{> driverLabels}}
 
-  {{> highScores}}
+  {{> modal}}
 
 </body>
 
@@ -32,6 +32,7 @@
         Wanna play? Enter your name to be added to the waitlist:
         <input id="txtName" type="text" />
         <button id="btnName" type="button">Enter</button>
+        <button id="btnShowHighScores">Show High Scores</button>
       </div>
     </div>
 
@@ -116,4 +117,8 @@
       </tbody>
     </table>
   </div>
+</template>
+
+<template name="modal">
+  {{showMessage}}
 </template>
