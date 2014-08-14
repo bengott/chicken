@@ -98,7 +98,7 @@ Template.driverLabels.helpers({
 });
 
 Template.highScores.rows = function() {
-  return HighScores.find({}, {sort: {wins: -1, player: 1}}).fetch();
+  return HighScores.find({}, {sort: {wins: -1, player: 1}, limit: 10}).fetch();
 };
 
 Template.modal.showMessage = function() {
