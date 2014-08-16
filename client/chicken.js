@@ -19,6 +19,11 @@ Template.header.events({
       onEscape: bootbox.hideAll()
     });
     UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
+
+    //clicking anywhere will close the bootbox modal
+    $(".bootbox.modal").click(function(e) {
+      bootbox.hideAll();
+    });
   }
 });
 
