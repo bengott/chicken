@@ -5,9 +5,10 @@ Meteor.methods({
     check(driver, String);
     console.log("chickenOut", driver);
 
-    //enforce a cutoff point for chickening out (2 timesteps before true midpoint)
-    var distanceX = Timing.timestep.get() * dx;
-    var cutoffX = roadWidth/2 - carWidth - dx*2;
+    // Enforce a cutoff point for chickening out (2 timesteps before true midpoint)
+    var distanceX = Timing.timestep.get() * DX;
+    var cutoffX = ROAD_WIDTH/2 - CAR_WIDTH - DX*2;
+    
     if (distanceX < cutoffX) {
 
       var carId = null;

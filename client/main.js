@@ -1,61 +1,63 @@
-UI.registerHelper("sessionGet", function(key) {
+UI.registerHelper("sessionGet", function (key) {
   return Session.get(key);
 });
 
 Template.header.events({
-  'click button#btnName': function() {
+  'click button#btnName': function () {
     enterName();
   },
-  'keydown input#txtName': function(e) {
-    //enter key
+  'keydown input#txtName': function (e) {
+    // Enter key
     if (e.which === 13) {
       enterName();
       e.stopPropagation();
     }
   },
- 'click button#btnShowHighScores': function() {
+ 'click button#btnShowHighScores': function () {
     bootbox.dialog({
-      message: " ", //bootbox won't allow an empty message
+      message: " ", // Bootbox won't allow an empty message
       onEscape: bootbox.hideAll()
     });
+
+    // Insert the high scores template into the bootbox modal body
     UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
 
-    //clicking anywhere will close the bootbox modal
-    $(".bootbox.modal").click(function(e) {
+    // Clicking anywhere will close the bootbox modal
+    $(".bootbox.modal").click(function () {
       bootbox.hideAll();
     });
   }
 });
 
-Template.waitlist.players = function() {
+Template.waitlist.players = function () {
   return Waitlist.find().fetch();
 };
 
 Template.graphics.helpers({
-  roadWidth: function() { return roadWidth; },
-  roadHeight: function() { return roadHeight; },
-  carWidth: function() { return carWidth; },
-  carHeight: function() { return carHeight; },
+  roadWidth:  function () { return ROAD_WIDTH; },
+  roadHeight: function () { return ROAD_HEIGHT; },
+  carWidth:   function () { return CAR_WIDTH; },
+  carHeight:  function () { return CAR_HEIGHT; },
 
   carXY: function (carId) {
     var car = Cars.findOne(carId);
     var chickenedOut = (car && car.chickenedOut) || false;
-    var distanceX = Timing.timestep.get() * dx;
+    var distanceX = Timing.timestep.get() * DX;
     var crash = Statuses.findOne("crash") && Statuses.findOne("crash").value;
 
     if (carId === "A") {
       return {
         x: distanceX,
-        y: chickenedOut && !crash ? bottomLaneY : midY
+        y: chickenedOut && !crash ? BOTTOM_LANE_Y : MID_Y
       };
     } else if (carId === "B") {
       return {
-        x: roadWidth - carWidth - distanceX,
-        y: chickenedOut && !crash ? topLaneY : midY
+        x: ROAD_WIDTH - CAR_WIDTH - distanceX,
+        y: chickenedOut && !crash ? TOP_LANE_Y : MID_Y
       };
     }
   },
-  countdown: function() {
+  countdown: function () {
     var countdown = Statuses.findOne("countdown") && Statuses.findOne("countdown").value;
     if (countdown > 0) {
       Timing.timestep.set(0);
@@ -67,46 +69,46 @@ Template.graphics.helpers({
       return "";
     }
   },
-  countdownXY: function() {
+  countdownXY: function () {
     var countdown = Statuses.findOne("countdown") && Statuses.findOne("countdown").value;
     var xOffset = 30;
     if (countdown === 10) xOffset = 60;
-    if (countdown === 0) xOffset = 70;
+    if (countdown === 0)  xOffset = 70;
 
     return {
-      x: roadWidth/2 - xOffset,
-      y: roadHeight/2 + 30
+      x: ROAD_WIDTH/2 - xOffset,
+      y: ROAD_HEIGHT/2 + 30
     };
   },
-  explosionCSS: function() {
+  explosionCSS: function () {
     var crash = Statuses.findOne("crash") && Statuses.findOne("crash").value;
     return crash ?  "" : "display: none;";
   }
 });
 
 Template.graphics.events({
-  'click': function() {
+  'click': function () {
     chickenOut();
   }
 });
 
 $(document).keydown(function (e) {
-  //if user hits spacebar, chicken out!
+  // If user hits spacebar, chicken out!
   if (e.which === 32) {
     chickenOut();
   }
 });
 
 Template.driverLabels.helpers({
-  driverA: function() { return getDriver("A"); },
-  driverB: function() { return getDriver("B"); }
+  driverA: function () { return getDriver("A"); },
+  driverB: function () { return getDriver("B"); }
 });
 
-Template.highScores.rows = function() {
+Template.highScores.rows = function () {
   return HighScores.find({}, {sort: {wins: -1, player: 1}, limit: 10}).fetch();
 };
 
-Template.modal.showMessage = function() {
+Template.modal.showMessage = function () {
   var modalMessage = Statuses.findOne("modal") && Statuses.findOne("modal").message;
   if (modalMessage) {
     bootbox.dialog({
@@ -116,8 +118,8 @@ Template.modal.showMessage = function() {
     });
     UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
 
-    //auto-hide the modal after 3 seconds and reset the modal message
-    Meteor.setTimeout(function() {
+    // Auto-hide the modal after 3 seconds and reset the modal message
+    Meteor.setTimeout(function () {
       bootbox.hideAll();
       Statuses.update("modal", {$set: {message: null}});
     }, 3000);
@@ -132,8 +134,8 @@ function enterName() {
   var name = $("#txtName").val();
   console.log("enterName", name);
   check(name, String);
-  //TODO: check that player name is unique (create server method for insert)
-  //      publish only names to client, return _id on insert method to use with chickenOut
+  // TODO: check that player name is unique (create server method for insert)
+  //       publish only names to client, return _id on insert method to use with chickenOut
   Waitlist.insert({player: name});
   Session.set("myName", name);
   $("#txtName").blur();
