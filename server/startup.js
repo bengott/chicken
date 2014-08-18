@@ -13,7 +13,7 @@ function initialize() {
   Cars.remove({});
   Cars.insert({_id: "A", driver: null, chickenedOut: null});
   Cars.insert({_id: "B", driver: null, chickenedOut: null});
-  
+
   Waitlist.remove({});
 
   Statuses.remove({});
@@ -34,15 +34,19 @@ function manageMatchups() {
 
     // If both cars now have drivers, reset and start the countdown...
     if (Cars.findOne("A").driver && Cars.findOne("B").driver) {
-      
-      // Reset the board
-      Timing.timestep.set(0);
-      Cars.update({}, {$set: {chickenedOut: null}}, {multi: true});
-      Statuses.update("crash", {$set: {value: false}});
 
-      //start the countdown
-      Statuses.update("countdown", {$set: {value: 10}});
-      console.log(10);
+      // Wait a couple of extra seconds to restart (allow Result modal to go away)
+      Meteor.setTimeout(function () {
+        
+        // Reset the board
+        Timing.timestep.set(0);
+        Cars.update({}, {$set: {chickenedOut: null}}, {multi: true});
+        Statuses.update("crash", {$set: {value: false}});
+
+        //start the countdown
+        Statuses.update("countdown", {$set: {value: 10}});
+        console.log(10);
+      }, 2000); // (the aforementioned couple of seconds)
     }
   } else {
 
