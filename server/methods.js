@@ -8,12 +8,13 @@ Meteor.methods({
     // Enforce a cutoff point for chickening out (2 timesteps before true midpoint)
     var distanceX = Timing.timestep.get() * DX;
     var cutoffX = ROAD_WIDTH/2 - CAR_WIDTH - DX*2;
+    var carId;
     
     if (distanceX < cutoffX) {
-
-      var carId = null;
-      if      (driver === Cars.findOne("A").driver) { carId = "A"; }
-      else if (driver === Cars.findOne("B").driver) { carId = "B"; }
+      
+      carId = null;
+      if      (driver === Cars.findOne("A").driver) carId = "A";
+      else if (driver === Cars.findOne("B").driver) carId = "B";
       
       console.log(driver, carId);
       if (carId) {

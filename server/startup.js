@@ -23,12 +23,14 @@ function initialize() {
 }
 
 function manageMatchups() {
+
+  var litItem, carId, countdown, newVal;
   
   // Assign players from waitlist to cars
   if ((!Cars.findOne("A").driver || !Cars.findOne("B").driver) && Waitlist.findOne()) {
-    
-    var listItem = Waitlist.findOne();
-    var carId = !Cars.findOne("A").driver ? "A" : "B";
+
+    listItem = Waitlist.findOne();
+    carId = !Cars.findOne("A").driver ? "A" : "B";
     Cars.update(carId, {$set: {driver: listItem.player}});
     Waitlist.remove(listItem._id);
 
@@ -51,12 +53,11 @@ function manageMatchups() {
   } else {
 
     // Continue countdown: decrement until 0, then reset to null
-    var countdown = Statuses.findOne("countdown").value;
-    
-    var newVal = (countdown > 0) ? countdown - 1 : null;
+    countdown = Statuses.findOne("countdown").value;
+    newVal = (countdown > 0) ? countdown - 1 : null;
     Statuses.update("countdown", {$set: {value: newVal}});
 
-    if (countdown != null) { console.log(newVal); }
+    if (countdown !== null) console.log(newVal);
 
     if (newVal === 0) {
       Timing.timer.start();
