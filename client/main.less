@@ -10,10 +10,9 @@ body {
 header {
   height: 200px;
   h1 {
-    font-size: 70px;
+    font-size: 100px;
     img {
-      vertical-align: top;
-      padding-left: 10px;
+      height: 90px;
     }
     a {
       color: black;
@@ -25,6 +24,7 @@ header {
   }
   h1, h3 {
     font-family: 'Bangers';
+    margin-top: 0px;
   }
   #main, #waitlist {
     display: inline-block;
@@ -33,19 +33,19 @@ header {
   #main {
     float: left;
   }
+  #txtName {
+    width: 200px;
+  }
   #waitlist {
     float: right;
     width: 20%;
     ul {
-      height: 140px;
+      height: 145px;
       border: 1px solid gray;
       overflow-y: scroll;
       list-style: none;
       padding: 2px;
     }
-  }
-  #btnShowHighScores {
-    margin-left: 25px;
   }
 }
 
@@ -61,6 +61,12 @@ header {
   #driverB {
     float: right;
     padding-right: 5px;
+  }
+  #btnShowHighScores {
+    font-size: 14px;
+    width: 200px;
+    margin-left: 400px;
+    margin-top: 10px;
   }
 }
 

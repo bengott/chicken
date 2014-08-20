@@ -3,29 +3,15 @@ UI.registerHelper("sessionGet", function (key) {
 });
 
 Template.header.events({
-  'click button#btnName': function () {
+  'click #btnName': function () {
     enterName();
   },
-  'keydown input#txtName': function (e) {
+  'keydown #txtName': function (e) {
     // Enter key
     if (e.which === 13) {
       enterName();
       e.stopPropagation();
     }
-  },
- 'click button#btnShowHighScores': function () {
-    bootbox.dialog({
-      message: " ", // Bootbox won't allow an empty message
-      onEscape: bootbox.hideAll()
-    });
-
-    // Insert the high scores template into the bootbox modal body
-    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
-
-    // Clicking anywhere will close the bootbox modal
-    $(".bootbox.modal").click(function () {
-      bootbox.hideAll();
-    });
   }
 });
 
@@ -102,6 +88,23 @@ $(document).keydown(function (e) {
 Template.driverLabels.helpers({
   driverA: function () { return getDriver("A"); },
   driverB: function () { return getDriver("B"); }
+});
+
+Template.driverLabels.events({
+ 'click #btnShowHighScores': function () {
+    bootbox.dialog({
+      message: " ", // Bootbox won't allow an empty message
+      onEscape: bootbox.hideAll()
+    });
+
+    // Insert the high scores template into the bootbox modal body
+    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
+
+    // Clicking anywhere will close the bootbox modal
+    $(".bootbox.modal").click(function () {
+      bootbox.hideAll();
+    });
+  }
 });
 
 Template.highScores.rows = function () {

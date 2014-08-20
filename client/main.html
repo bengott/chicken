@@ -24,7 +24,7 @@
   <header>
     <div id="main">
       <h1>
-        <a href="/">CHICKEN! <img src="running-chicken.svg" height="70" /></a>
+        <a href="/">CHICKEN! <img src="running-chicken.svg" /></a>
       </h1>
       <h3>Hit spacebar or click the road to chicken out! Winner stays on.</h3>
 
@@ -32,7 +32,6 @@
         Wanna play? Enter your name to be added to the waitlist:
         <input id="txtName" type="text" />
         <button id="btnName" type="button">Enter</button>
-        <button id="btnShowHighScores">Show High Scores</button>
       </div>
     </div>
 
@@ -100,8 +99,9 @@
     <div id="driverA">{{driverA}}</div>
     <div id="vs">VS</div>
     <div id="driverB">{{driverB}}</div>
+    <button id="btnShowHighScores">Show High Scores</button>
   </div>
-</template>  
+</template>
 
 <template name="highScores">
   <div id="highScores">
