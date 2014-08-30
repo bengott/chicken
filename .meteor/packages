@@ -7,5 +7,5 @@ standard-app-packages
 autopublish
 coffeescript
 less
-bootstrap-3
-bootboxjs
+mizzao:bootstrap-3
+mizzao:bootboxjs
