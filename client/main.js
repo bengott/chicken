@@ -57,8 +57,8 @@ Template.graphics.helpers({
   },
   countdownXY: function () {
     var countdown = Statuses.findOne("countdown") && Statuses.findOne("countdown").value;
-    var xOffset = 30;
-    if (countdown === 10) xOffset = 60;
+    var xOffset = 25;
+    if (countdown === 10) xOffset = 55;
     if (countdown === 0)  xOffset = 70;
 
     return {
