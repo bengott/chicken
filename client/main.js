@@ -98,7 +98,7 @@ Template.driverLabels.events({
     });
 
     // Insert the high scores template into the bootbox modal body
-    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
+    Blaze.render(Template.highScores, $(".bootbox-body").get(0));
 
     // Clicking anywhere will close the bootbox modal
     $(".bootbox.modal").click(function () {
@@ -119,7 +119,7 @@ Template.modal.showMessage = function () {
       message: modalMessage,
       onEscape: bootbox.hideAll()
     });
-    UI.insert(UI.render(Template.highScores), $(".bootbox-body").get(0));
+    Blaze.render(Template.highScores, $(".bootbox-body").get(0));
 
     // Auto-hide the modal after 3 seconds and reset the modal message
     Meteor.setTimeout(function () {
