@@ -1,4 +1,4 @@
-UI.registerHelper("sessionGet", function (key) {
+Template.registerHelper("sessionGet", function (key) {
   return Session.get(key);
 });
 
