@@ -18,6 +18,8 @@
 
   {{> modal}}
 
+  {{> footer}}
+
 </body>
 
 <template name="header">
@@ -121,4 +123,12 @@
 
 <template name="modal">
   {{showMessage}}
+</template>
+
+<template name="footer">
+  <footer>
+    Made with <a href="https://www.meteor.com/" target="_blank">Meteor</a>
+    by <a href="https://twitter.com/BenGottAbides" target="_blank">Ben Gott</a>.
+    Source code at <a href="https://github.com/bengott/chicken" target="_blank">GitHub</a>.
+  </footer>
 </template>
