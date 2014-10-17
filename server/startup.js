@@ -24,7 +24,7 @@ function initialize() {
 
 function manageMatchups() {
 
-  var litItem, carId, countdown, newVal;
+  var listItem, carId, countdown, newVal;
   
   // Assign players from waitlist to cars
   if ((!Cars.findOne("A").driver || !Cars.findOne("B").driver) && Waitlist.findOne()) {
