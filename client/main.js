@@ -1,7 +1,3 @@
-Template.registerHelper("sessionGet", function (key) {
-  return Session.get(key);
-});
-
 Template.header.events({
   'click #btnName': function () {
     enterName();
@@ -15,9 +11,11 @@ Template.header.events({
   }
 });
 
-Template.waitlist.players = function () {
-  return Waitlist.find().fetch();
-};
+Template.waitlist.helpers({
+  players: function () {
+    return Waitlist.find().fetch();
+  }
+});
 
 Template.graphics.helpers({
   roadWidth:  function () { return ROAD_WIDTH; },
@@ -107,27 +105,31 @@ Template.driverLabels.events({
   }
 });
 
-Template.highScores.rows = function () {
-  return HighScores.find({}, {sort: {wins: -1, player: 1}, limit: 10}).fetch();
-};
-
-Template.modal.showMessage = function () {
-  var modalMessage = Statuses.findOne("modal") && Statuses.findOne("modal").message;
-  if (modalMessage) {
-    bootbox.dialog({
-      title: "Result",
-      message: modalMessage,
-      onEscape: bootbox.hideAll()
-    });
-    Blaze.render(Template.highScores, $(".bootbox-body").get(0));
-
-    // Auto-hide the modal after 3 seconds and reset the modal message
-    Meteor.setTimeout(function () {
-      bootbox.hideAll();
-      Statuses.update("modal", {$set: {message: null}});
-    }, 3000);
+Template.highScores.helpers({
+  rows: function () {
+    return HighScores.find({}, {sort: {wins: -1, player: 1}, limit: 10}).fetch();
   }
-};
+});
+
+Template.modal.helpers({
+  showMessage: function () {
+    var modalMessage = Statuses.findOne("modal") && Statuses.findOne("modal").message;
+    if (modalMessage) {
+      bootbox.dialog({
+        title: "Result",
+        message: modalMessage,
+        onEscape: bootbox.hideAll()
+      });
+      Blaze.render(Template.highScores, $(".bootbox-body").get(0));
+
+      // Auto-hide the modal after 3 seconds and reset the modal message
+      Meteor.setTimeout(function () {
+        bootbox.hideAll();
+        Statuses.update("modal", {$set: {message: null}});
+      }, 3000);
+    }
+  }
+});
 
 function getDriver(carId) {
   return (Cars.findOne(carId) && Cars.findOne(carId).driver) || "waiting for player..."; 
