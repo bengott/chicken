@@ -122,11 +122,11 @@ Template.modal.helpers({
       });
       Blaze.render(Template.highScores, $(".bootbox-body").get(0));
 
-      // Auto-hide the modal after 3 seconds and reset the modal message
+      // Auto-hide the modal after 5 seconds and reset the modal message
       Meteor.setTimeout(function () {
         bootbox.hideAll();
         Statuses.update("modal", {$set: {message: null}});
-      }, 3000);
+      }, 5000);
     }
   }
 });
