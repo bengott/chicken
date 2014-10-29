@@ -132,7 +132,7 @@ Template.modal.helpers({
 });
 
 function getDriver(carId) {
-  return (Cars.findOne(carId) && Cars.findOne(carId).driver) || "waiting for player..."; 
+  return (Cars.findOne(carId) && Cars.findOne(carId).driver) || "waiting for player...";
 }
 
 function enterName() {
