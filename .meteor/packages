@@ -3,8 +3,11 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-standard-app-packages
-autopublish
-less
+standard-app-packages@1.0.9
+autopublish@1.0.7
+less@2.7.8
 mizzao:bootstrap-3
 mizzao:bootboxjs
+standard-minifier-css
+standard-minifier-js
+shell-server
