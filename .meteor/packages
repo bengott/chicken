@@ -5,9 +5,10 @@
 
 standard-app-packages@1.0.9
 autopublish@1.0.7
-less@2.7.8
+less@3.0.1
 mizzao:bootstrap-3
 mizzao:bootboxjs
-standard-minifier-css
-standard-minifier-js
-shell-server
+standard-minifier-css@1.7.2
+standard-minifier-js@2.6.0
+shell-server@0.5.0
+dynamic-import
